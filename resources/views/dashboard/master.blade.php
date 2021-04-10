@@ -45,7 +45,8 @@
 	<link rel="stylesheet" href="{{asset("dashboard/css/layouts/vertical/themes/theme-i.css")}}">
 	
 	
-	
+	@laravelPWA
+
 </head>
 <style>
 	#snackbar {
