@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Mike42\Escpos\EscposImage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Mike42\Escpos\CapabilityProfile;
 use App\Events\OrderStatusChangedEvent;
 use Illuminate\Database\Eloquent\Builder;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
@@ -301,10 +302,10 @@ class SaleController extends Controller
         }     
         $numeromesa=$cuenta->table->numero;
  
-              
+        $profile= CapabilityProfile::load('simple');
         $nombre_impresora = "POS-582"; 
         $connector = new WindowsPrintConnector("smb://INTEL:jhefi123@DESKTOP-M8AETTU/".$nombre_impresora);
-        $printer = new Printer($connector);
+        $printer = new Printer($connector, $profile);
         $printer->setJustification(Printer::JUSTIFY_CENTER);
     
             
@@ -378,8 +379,9 @@ class SaleController extends Controller
 
         
             $nombre_impresora = "POS-582"; 
+            $profile= CapabilityProfile::load('simple');
             $connector = new WindowsPrintConnector($nombre_impresora);
-            $printer = new Printer($connector);
+            $printer = new Printer($connector ,$profile);
             $printer->setTextSize(2, 2);
             $printer->text("#".$tickets."\n");
             $printer->setTextSize(2, 1);
