@@ -13,7 +13,7 @@
      @foreach ($cuentas as $cuenta)
         <div class="col-sm-3 col-6">
     
-            <div class="card  border ">
+            <div class="card ">
                 @if ($cuenta->estado=="finalizado")
                 <a href="javascript:void(0)">
 

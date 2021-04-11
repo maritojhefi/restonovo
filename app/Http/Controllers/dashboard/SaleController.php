@@ -303,7 +303,7 @@ class SaleController extends Controller
  
               
         $nombre_impresora = "POS-582"; 
-        $connector = new WindowsPrintConnector($nombre_impresora);
+        $connector = new WindowsPrintConnector("smb://INTEL:jhefi123@DESKTOP-M8AETTU/".$nombre_impresora);
         $printer = new Printer($connector);
         $printer->setJustification(Printer::JUSTIFY_CENTER);
     
